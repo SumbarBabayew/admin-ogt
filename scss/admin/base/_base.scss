@@ -1,0 +1,90 @@
+@import "../base/variables";
+@import "../base/mixin";
+
+.title__product {
+  display: flex;
+  margin: 2rem 0rem 1rem 0;
+  font-weight: 800;
+  @include media(font-size, (2rem, 2rem, 1.5rem));
+  display: inline-block;
+  gap: 0.5rem;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+    color: $primary-color;
+  }
+  i {
+    align-items: center;
+    margin-bottom: -2rem;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 30px !important;
+  height: 5px !important;
+  border-radius: 5px !important;
+  background: $color-white !important;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: $color-white !important;
+  font-weight: 900 !important;
+  font-size: 25px !important;
+
+  &:hover {
+    background: $color-black !important;
+    display: none !important;
+  }
+}
+
+.swiper-slide {
+  border-radius: 10px !important;
+  cursor: pointer;
+}
+
+.v-overlay__scrim {
+  position: fixed !important;
+}
+
+.v-carousel {
+  height: 100% !important;
+}
+.v-window__next,
+.v-window__prev,
+.v-carousel__controls {
+  @include media(display, (block, block, none));
+  @include media(display, (block, block, none));
+}
+
+.v-icon.v-icon.v-icon--link {
+  color: #e38d0b !important;
+}
+.v-menu {
+  display: block !important;
+}
+
+.mdi:before,
+.mdi-set {
+  // display: none !important;
+}
+
+.search_container {
+  display: flex;
+  align-items: center;
+  border: 0.2px solid $primary-color;
+  border-radius: 4px;
+  // padding: 0 1rem;
+  overflow: hidden;
+  height: 37px;
+  width: 40%;
+  input {
+    width: 100%;
+    outline: none;
+    padding: 0 0.4rem;
+  }
+  svg {
+    background: $primary-color;
+    color: $color-white;
+    height: 100%;
+  }
+}

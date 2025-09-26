@@ -1,0 +1,58 @@
+$maxWidth: 1366px;
+$background-color: #f5f5f5;
+$primary-color: #5d87ff;
+$secondary-text-color: #919396;
+$third-text-color: #575b5f;
+$text-color: #575b5f;
+$color-orange-background: #eebd62;
+$color-orange-vip: #ffd249;
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$font-family-title: "Noto Serif";
+$font-family-default: Noto Sans;
+$background-input: #f0f1f5;
+$color-border: #cfcfcf;
+$color-white: #ffffff;
+$color-red: #e62333;
+$color-green: #22e8ad;
+$color-black: #000000;
+$text-font-weight: 600;
+$color-footer-text: #575b5f;
+$color-container-social: #d9d9d9;
+$default-linear-gradient: linear-gradient(
+  90.21deg,
+  rgba(0, 0, 0, 0.54) 25.22%,
+  rgba(0, 0, 0, 0) 63.52%
+);
+$conic-gradient: conic-gradient(
+  from 100.62deg at 46.67% 59.46%,
+  #ffd249 0deg,
+  rgba(255, 255, 255, 0) 360deg
+);
+
+$orange-linear-gradient: linear-gradient(
+  93.13deg,
+  #ffd249 -36.87%,
+  rgba(252, 252, 255, 0) 135.91%
+);
+
+$normal-font-size: 18px;
+$normal-line-height: 18px;
+$middle-font-size: 16px;
+$small-font-size: 12px;
+$background-selection: #e6ebff;
+$small-border-radius: 4px;
+$text-line-height: 22px;
+
+@mixin defaultNormalFontSize($value) {
+  @include media(
+    font-size,
+    ($normal-font-size, $normal-font-size, 18-$value + px)
+  );
+}
+
+@mixin defaultSmallFontSize($value) {
+  @include media(
+    font-size,
+    ($small-font-size, $small-font-size, 12-$value + px)
+  );
+}

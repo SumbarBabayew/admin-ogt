@@ -1,0 +1,15 @@
+.container__icons {
+  &__container__success {
+    background: #bfc8ff;
+    display: inline-block;
+    border-radius: 50%;
+    @include media(padding, (3rem, 2rem));
+
+    &--box {
+      padding: 2rem;
+      border-radius: 50%;
+      background: $primary-color;
+    }
+    margin-bottom: 2rem;
+  }
+}

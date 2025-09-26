@@ -1,0 +1,147 @@
+<script setup >
+import { baseUrl } from '@/data/dashboard/BaseUrl';
+import { deleteEvent } from "@/service/admin.api";
+const emit = defineEmits(["delete-item"]);
+const props = defineProps({ items: Array, count: Number });
+const handleItems = ref([])
+const deleteLoading = ref(false)
+const deleteItem = async (c) => {
+  await deleteEvent({ id: c }).then(() => {
+    deleteLoading.value = true;
+    handleItems.value = props.items.filter(item => item.id !== c)
+    emit("delete-item", handleItems.value)
+  })
+  deleteLoading.value = false
+}
+</script>
+
+<template>
+  <div>
+    <div class="container">
+      <span class="count">Sany ( {{ props.count }} )</span>
+      <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-1">Name</div>
+          <div class="col col-2">Subtitle</div>
+          <div class="col col-2">Date</div>
+        </li>
+       <router-link
+        v-for="(item, i) in items"
+        :key="i"
+        :to="`/questions-by-event/${item.id}`"
+        class="table-row"
+        custom
+        v-slot="{ navigate }"
+        >
+        <li @click="navigate">
+            <div class="col col-1" data-label="Title" :style="{ color: `#${item.color}` }">
+            {{ item.name }}
+            </div>
+            <div class="col col-2" data-label="Subtitle">{{ item.subtitle }}</div>
+            <div class="col col-2" data-label="Date">{{ item.date }}</div>
+        </li>
+        </router-link>
+      </ul>
+    </div>
+  </div>
+</template>
+
+
+<style lang="scss" scoped>
+body {
+  font-family: 'lato', sans-serif;
+}
+
+.count {
+  font-weight: 800;
+}
+
+.container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.image {
+  border-radius: 10%;
+  width: 35%;
+  height: 100%;
+}
+
+
+.responsive-table {
+  width: 100%;
+
+  li {
+    border-radius: 3px;
+    padding: 15px 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  .table-header {
+    background-color: #5D87FF;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: white;
+    margin-bottom: 0.4rem;
+  }
+
+  .table-row {
+    background-color: white;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    padding: 10px 5px;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+
+  .col {
+    flex-basis: 20%;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .col-6 {
+    display: flex;
+    gap: 0rem;
+  }
+
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+
+    .image {
+      border-radius: 10px;
+      width: 20%;
+    }
+
+    li {
+      display: block;
+    }
+
+    .col {
+      flex-basis: 100%;
+    }
+
+    .col {
+      display: flex;
+      padding: 10px 0;
+
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+</style>
